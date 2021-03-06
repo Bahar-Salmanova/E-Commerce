@@ -25,6 +25,7 @@ namespace Data.Configurations
             builder
             .Property(m => m.Value)
             .IsRequired();
+
             builder
              .Property(m => m.IsMoney)
              .IsRequired()

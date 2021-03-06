@@ -27,6 +27,7 @@ namespace E_Commerce.Controllers.V1
         [HttpPost]
         public async Task<IActionResult> Register([FromBody] string username, string password)
         {
+            
             var adminname = await _unitOfWork.AdminUsers.GetFeaturedNameByAdmin(username);
 
             var adminpassword = await _unitOfWork.AdminUsers.GetFeaturedPasswordByAdmin(password);

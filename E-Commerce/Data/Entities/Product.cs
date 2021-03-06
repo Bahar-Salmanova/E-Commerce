@@ -16,6 +16,8 @@ namespace Data.Entities
         public Seller Seller { get; set; }
         public Unit Unit { get; set; }
         public ICollection<DiscountProduct> DiscountProducts { get; set; }
+        public ICollection<BasketItem> BasketItems { get; set; }
+
         public ICollection<Stock> Stocks { get; set; }
 
     }

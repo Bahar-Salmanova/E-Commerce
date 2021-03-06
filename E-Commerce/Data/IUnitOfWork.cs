@@ -1,4 +1,5 @@
-﻿using Data.Repositories.Interfaces;
+﻿using Data.Entities;
+using Data.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -17,8 +18,9 @@ namespace Data
         ISellerRepository Seller { get; }
         IStockRepository Stock { get; }
         ISuperAdminRepository SuperAdmin { get; }
+        IBasketItemRepository BasketItem { get; }
         IUnitRepository Unit { get; }
-        Task<int> CommitAsync(); 
-
+        Task<int> CommitAsync();
+        
     }
 }

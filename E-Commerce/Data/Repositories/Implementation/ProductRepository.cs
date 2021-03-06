@@ -11,9 +11,8 @@ namespace Data.Repositories.Implementation
 {
    public class ProductRepository:Repository<Product>, IProductRepository
     {public ProductRepository(ApplicationDbContext context) : base(context) { }
-        private ApplicationDbContext _context => Context as ApplicationDbContext; 
-
-        public async Task<IEnumerable<Product>> GetDiscountById(int productId)
+        private ApplicationDbContext _context => Context as ApplicationDbContext;
+      public async Task<IEnumerable<Product>> GetDiscountById(int productId)
         {
             return await _context.Products
                 .Include(p => p.DiscountProducts)

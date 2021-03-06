@@ -22,6 +22,8 @@ namespace Data.Repositories.Implementation
         {
             await Context.Set<TEntity>().AddAsync(entity);
         }
+       
+
 
         public async Task AddRangeAsync(IEnumerable<TEntity> entities)
         {
@@ -47,6 +49,8 @@ namespace Data.Repositories.Implementation
         {
             Context.Set<TEntity>().Remove(entity);
         }
+
+
 
         public void RemoveRange(IEnumerable<TEntity> entities)
         {
