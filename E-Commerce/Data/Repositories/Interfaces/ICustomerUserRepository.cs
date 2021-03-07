@@ -8,7 +8,7 @@ namespace Data.Repositories.Interfaces
 {
     public interface ICustomerUserRepository : IRepository<CustomerUser>
     {
-        Task<IEnumerable<CustomerUser>> GetEmailByCustomer(string email);
-        Task<IEnumerable<CustomerUser>> GetPasswordByCustomer(string password);
+        Task<IEnumerable<CustomerUser>> GetEmailByCustomer(string email, string password);
+
     }
 }

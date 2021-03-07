@@ -28,11 +28,13 @@ namespace E_Commerce.Controllers.V1
         [HttpPost]
         public async Task<IActionResult> Login([FromBody]string email,string password)
         {
-            var customeremail = await _unitOfWork.CustomerUser.GetEmailByCustomer(email);
-            if (customeremail == null) return NotFound();
-            var customerpassword = await _unitOfWork.CustomerUser.GetPasswordByCustomer(password);
-            var customer=_mapper.Map<IEnumerable<CustomerUser>, IEnumerable < CustomerUserResource >> (customeremail);
-            return Ok(customer);
+            var customer = await _unitOfWork.CustomerUser.GetEmailByCustomer(email,password);
+            if (customer! == null)
+            {
+                return NotFound();
+            }
+            var customerresource=_mapper.Map<IEnumerable<CustomerUser>, IEnumerable < CustomerUserResource >> (customer);
+            return Ok(customerresource);
         }
 
     }

@@ -6,7 +6,7 @@ C:\Users\User\source\repos\E-Commerce\Data\obj\Debug\netcoreapp3.1\Data.Assembly
 C:\Users\User\source\repos\E-Commerce\Data\bin\Debug\netcoreapp3.1\Data.runtimeconfig.json
 C:\Users\User\source\repos\E-Commerce\Data\bin\Debug\netcoreapp3.1\Data.runtimeconfig.dev.json
 C:\Users\User\source\repos\E-Commerce\Data\bin\Debug\netcoreapp3.1\Data.pdb
-C:\Users\User\source\repos\E-Commerce\Data\obj\Debug\netcoreapp3.1\Data.csproj.CoreCompileInputs.cache
 C:\Users\User\source\repos\E-Commerce\Data\obj\Debug\netcoreapp3.1\Data.dll
 C:\Users\User\source\repos\E-Commerce\Data\obj\Debug\netcoreapp3.1\Data.pdb
 C:\Users\User\source\repos\E-Commerce\Data\obj\Debug\netcoreapp3.1\Data.genruntimeconfig.cache
+C:\Users\User\source\repos\E-Commerce\Data\obj\Debug\netcoreapp3.1\Data.csproj.CoreCompileInputs.cache

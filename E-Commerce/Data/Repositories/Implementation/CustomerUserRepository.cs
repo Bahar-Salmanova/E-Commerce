@@ -13,14 +13,20 @@ namespace Data.Repositories.Implementation
     {public CustomerUserRepository(ApplicationDbContext context) : base(context) { }
         private ApplicationDbContext _context => Context as ApplicationDbContext;
 
-        public async Task<IEnumerable<CustomerUser>> GetEmailByCustomer(string email)
+        public async Task<IEnumerable<CustomerUser>> GetEmailByCustomer(string email,string password)
         {
-           return await _context.CustomerUsers.Where(c => c.Email == email).ToListAsync();
+        return await _context.CustomerUsers
+                .Include(c=>c.Permissions)
+                .Where(c => c.Email == email)
+                .Where(c=>c.Password==password)
+                .Where(a => a.Permissions.IsBuyPermision)
+                .Where(a =>! a.Permissions.IsCreatePermission)
+                .ToListAsync();
+            
+                
+            
+           
         }
 
-        public async Task<IEnumerable<CustomerUser>> GetPasswordByCustomer(string password)
-        {
-          return  await _context.CustomerUsers.Where(c => c.Password == password).ToListAsync();
-        }
-    }
+    } ;
 }

@@ -17,7 +17,6 @@ namespace Data
         IProductRepository Product { get; }
         ISellerRepository Seller { get; }
         IStockRepository Stock { get; }
-        ISuperAdminRepository SuperAdmin { get; }
         IBasketItemRepository BasketItem { get; }
         IUnitRepository Unit { get; }
         Task<int> CommitAsync();

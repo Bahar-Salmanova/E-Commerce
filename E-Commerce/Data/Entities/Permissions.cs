@@ -9,7 +9,8 @@ namespace Data.Entities
            public bool  IsBuyPermision { get; set; }
         public bool IsCreatePermission { get; set; }
         public ICollection<AdminUser> AdminUsers { get; set; }
-        public ICollection<SuperAdmin> SuperAdmins { get; set; }
+       
+        public ICollection<CustomerUser> CustomerUsers { get; set; }
 
     }
 }

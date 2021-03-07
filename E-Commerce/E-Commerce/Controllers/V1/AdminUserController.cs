@@ -28,13 +28,17 @@ namespace E_Commerce.Controllers.V1
         public async Task<IActionResult> Register([FromBody] string username, string password)
         {
             
-            var adminname = await _unitOfWork.AdminUsers.GetFeaturedNameByAdmin(username);
+            var admin = await _unitOfWork.AdminUsers.GetFeaturedNameByAdmin(username,password);
 
-            var adminpassword = await _unitOfWork.AdminUsers.GetFeaturedPasswordByAdmin(password);
-            var admin = _mapper.Map<IEnumerable<AdminUser>, IEnumerable<AdminUserResource>>(adminname);
-            if (adminname != null || adminpassword != null) return Ok(admin);
+            if (admin == null)
+            {
+                return NotFound();
+               
+            }
 
-            return Ok("var");
+            var adminresource = _mapper.Map<IEnumerable<AdminUser>, IEnumerable<AdminUserResource>>(admin);
+           
+            return Ok(adminresource);
         }
         
     }

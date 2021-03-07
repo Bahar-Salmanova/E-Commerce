@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Data;
 using Data.Entities;
+using E_Commerce.Resources;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -27,7 +28,9 @@ namespace E_Commerce.Controllers.V1
         public async Task<IActionResult> GetBasketItems(int adminUserId)
         {
            var basketItems = await _unitOfWork.BasketItem.GetBasketItemsAsync(adminUserId);
-            return Ok(basketItems);
+
+            var basketitemresource = _mapper.Map<IEnumerable<BasketItem>, IEnumerable<BasketItemResource>>(basketItems);
+            return Ok(basketitemresource);
         }
 
         // POST api/ShoppingCart
@@ -35,7 +38,10 @@ namespace E_Commerce.Controllers.V1
         public async Task<IActionResult> Post([FromBody] BasketItem basketItem)
         {
             var basketitem=await _unitOfWork.BasketItem.AddItemintoBasketAsync(basketItem);
-            return Created($"shoppingCart", basketitem);
+
+            var basketitemresource = _mapper.Map<IEnumerable<BasketItem>, IEnumerable<BasketItemResource>>(basketitem);
+
+            return Created($"shoppingCart", basketitemresource);
             
         }
 
@@ -49,8 +55,10 @@ namespace E_Commerce.Controllers.V1
             if (basketItems == null)
 
                 return NotFound("Item not found in the basket, please check the basketItemId");
+            var basketitemresource = _mapper.Map<IEnumerable<BasketItem>, IEnumerable<BasketItemResource>>(basketItems);
 
-            return Ok(basketItems);
+
+            return Ok(basketitemresource);
 
         }
 
@@ -59,8 +67,11 @@ namespace E_Commerce.Controllers.V1
         public async Task<IActionResult> ClearBasket(int adminuserId)
         {
             var basketItems = await _unitOfWork.BasketItem.ClearBasketAsync(adminuserId);
+            var basketitemresource = _mapper.Map<IEnumerable<BasketItem>, IEnumerable<BasketItemResource>>(basketItems);
 
-            return Ok(basketItems);
+
+            return Ok(basketitemresource);
+
         }
 
     }

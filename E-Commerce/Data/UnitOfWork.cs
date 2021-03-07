@@ -21,7 +21,6 @@ namespace Data
         private UnitRepository _unitRepository;
         private StockRepository _stockRepository;
        private BasketItemRepository _basketItemRepository;
-        private SuperAdminRepository _superAdminRepository;
 
         public UnitOfWork(ApplicationDbContext context)
         {
@@ -39,7 +38,6 @@ namespace Data
         public IUnitRepository Unit => _unitRepository ??= new UnitRepository(_context);
         public IStockRepository Stock => _stockRepository ??= new StockRepository(_context);
         public IAdminUserRepository AdminUsers => _adminUsersRepository ??= new AdminUserRepository(_context);
-        public ISuperAdminRepository SuperAdmin => _superAdminRepository ??= new SuperAdminRepository(_context);
         public IBasketItemRepository BasketItem => _basketItemRepository ??= new BasketItemRepository(_context);
 
 

@@ -32,6 +32,10 @@ namespace Data.Configurations
               .Property(m => m.FirstName)
               .HasMaxLength(50)
               .IsRequired();
+            //builder
+            // .Property(m => m.Token)
+            // .HasMaxLength(200)
+            // .IsRequired();
 
             builder
               .Property(m => m.LastName)

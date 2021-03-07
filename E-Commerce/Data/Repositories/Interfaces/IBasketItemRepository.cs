@@ -15,11 +15,7 @@ namespace Data.Repositories.Interfaces
         Task<IEnumerable<BasketItem>> ClearBasketAsync(int adminuserId);
 
 
-        //Task<BasketItem> AddItemintoBasketAsync(BasketItem basketItem);
-        //Task<IList<BasketItem>> ChangeBasketItemQuantityAsync(int id, int quantity);
-        //Task<IList<BasketItem>> ClearBasketAsync(int userId);
-        //Task<IList<BasketItem>> DeleteBasketItemByIdAsync(int id);
-        //Task<IList<BasketItem>> GetBasketItemsAsync(int userId);
+        
 
     }
 }

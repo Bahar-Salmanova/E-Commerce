@@ -4,14 +4,16 @@ using Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210307135613_AddAdminToken")]
+    partial class AddAdminToken
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -57,6 +59,9 @@ namespace Data.Migrations
                         .HasColumnType("bit")
                         .HasDefaultValue(true);
 
+                    b.Property<string>("Token")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("UserName")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -101,6 +106,9 @@ namespace Data.Migrations
                         .HasColumnType("bit")
                         .HasDefaultValue(true);
 
+                    b.Property<int>("SuperAdminId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("AdminUserId");
@@ -108,6 +116,8 @@ namespace Data.Migrations
                     b.HasIndex("CustomerUserId");
 
                     b.HasIndex("ProductId");
+
+                    b.HasIndex("SuperAdminId");
 
                     b.ToTable("BasketItem");
                 });
@@ -374,6 +384,56 @@ namespace Data.Migrations
                     b.ToTable("Stock");
                 });
 
+            modelBuilder.Entity("Data.Entities.SuperAdmin", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AddedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("AddedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime?>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("PermissionsId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PermissionsId");
+
+                    b.ToTable("SuperAdmin");
+                });
+
             modelBuilder.Entity("Data.Entities.Unit", b =>
                 {
                     b.Property<int>("Id")
@@ -435,11 +495,19 @@ namespace Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Data.Entities.SuperAdmin", "SuperAdmin")
+                        .WithMany("BasketItems")
+                        .HasForeignKey("SuperAdminId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("AdminUsers");
 
                     b.Navigation("CustomerUser");
 
                     b.Navigation("Product");
+
+                    b.Navigation("SuperAdmin");
                 });
 
             modelBuilder.Entity("Data.Entities.CustomerUser", b =>
@@ -502,6 +570,17 @@ namespace Data.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("Data.Entities.SuperAdmin", b =>
+                {
+                    b.HasOne("Data.Entities.Permissions", "Permissions")
+                        .WithMany("SuperAdmins")
+                        .HasForeignKey("PermissionsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Permissions");
+                });
+
             modelBuilder.Entity("Data.Entities.AdminUser", b =>
                 {
                     b.Navigation("BasketItems");
@@ -522,6 +601,8 @@ namespace Data.Migrations
                     b.Navigation("AdminUsers");
 
                     b.Navigation("CustomerUsers");
+
+                    b.Navigation("SuperAdmins");
                 });
 
             modelBuilder.Entity("Data.Entities.Product", b =>
@@ -536,6 +617,11 @@ namespace Data.Migrations
             modelBuilder.Entity("Data.Entities.Seller", b =>
                 {
                     b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("Data.Entities.SuperAdmin", b =>
+                {
+                    b.Navigation("BasketItems");
                 });
 
             modelBuilder.Entity("Data.Entities.Unit", b =>

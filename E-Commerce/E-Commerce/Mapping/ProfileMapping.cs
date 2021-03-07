@@ -13,11 +13,11 @@ namespace E_Commerce.Mapping
     {
        public ProfileMapping()
         {
-            CreateMap<AdminUser, AdminUserResource>();
-           
-           CreateMap<Product, ProductResource > ();
+            CreateMap<AdminUser, AdminUserResource>();          
+            CreateMap<Product, ProductResource > ();
             CreateMap<Seller, SellerResource>();
             CreateMap<CustomerUser, CustomerUserResource>();
+            CreateMap<BasketItem, BasketItemResource>();
 
         }
     }

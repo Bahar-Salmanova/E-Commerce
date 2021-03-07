@@ -8,7 +8,7 @@ namespace Data.Repositories.Interfaces
 {
     public interface IAdminUserRepository : IRepository<AdminUser>
     {
-        Task<IEnumerable<AdminUser>> GetFeaturedNameByAdmin(string email);
-        Task<IEnumerable<AdminUser>> GetFeaturedPasswordByAdmin(string password);
+        Task<IEnumerable<AdminUser>> GetFeaturedNameByAdmin(string email, string password);
+        
     }
 }

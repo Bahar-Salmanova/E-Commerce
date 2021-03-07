@@ -14,7 +14,7 @@ namespace Data.Repositories.Implementation
         
         public BasketItemRepository(ApplicationDbContext context) : base(context) { }
         private ApplicationDbContext _context => Context as ApplicationDbContext;
-        private UnitOfWork _unitOfWork;
+        
         public async Task<IEnumerable<BasketItem>> GetBasketItemsAsync(int adminUserId)
         {
             return await _context.BasketItems.Include(b => b.AdminUsers)
@@ -69,43 +69,8 @@ namespace Data.Repositories.Implementation
             await _context.SaveChangesAsync();
 
             return (basketItems);
-
-            //var basketItems = await _iRepository.GetAsync<BasketItem>(b => b.UserId == userId);
+   
         }
-
-
-
-
-
-
-        //public async Task<IEnumerable<BasketItem>> GetBasketItemsAsync(int adminUserId)
-        //{
-
-        //    return await _context.BasketItems.Include(b => b.AdminUsers)
-        //        .Where(b => b.AdminUsers.Id == adminUserId).ToListAsync();
-
-        //}
-
-
-
-
-        //public async Task<BasketItem> AddItemintoBasketAsync(BasketItem basketItem)
-        //{
-        //    IEnumerable<BasketItem> basketItems = await _context.GetAsync<BasketItem>(b => b.UserId == basketItem.UserId);
-        //    //this is for primeray key generate becuase the actuall database is not not connected, once we have actuall db connected the following live of code will be remove
-        //    if (basketItems.Count() > 0)
-        //    {
-        //        basketItem.Id = basketItems.Last().Id + 1;
-        //    }
-        //    else
-        //    {
-        //        basketItem.Id = 1;
-        //    }
-
-        //    _context.Create<BasketItem>(basketItem);
-        //    await _context.SaveAsync();
-        //    return basketItem;
-        //}
 
     }
 }

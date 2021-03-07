@@ -25,15 +25,11 @@ namespace Data
             builder.ApplyConfiguration(new SellerConfiguration());
             builder.ApplyConfiguration(new StockConfiguration());
             builder.ApplyConfiguration(new UnitConfiguration());
-            builder.ApplyConfiguration(new SuperAdminConfiguration());
             builder.ApplyConfiguration(new BasketItemsConfiguation());
 
         }
 
-        internal Task GetAsync<T>(Func<object, bool> p)
-        {
-            throw new NotImplementedException();
-        }
+       
 
         public DbSet<AdminUser> AdminUsers { get; set; }
         public DbSet<CustomerUser> CustomerUsers { get; set; }
@@ -44,7 +40,6 @@ namespace Data
         public DbSet<Seller> Sellers { get; set; }
         public DbSet<Stock> Stocks { get; set; }
         public DbSet<Unit> Units { get; set; }
-        public DbSet<SuperAdmin> SuperAdmins { get; set; }
         public DbSet<BasketItem> BasketItems { get; set; }
 
 

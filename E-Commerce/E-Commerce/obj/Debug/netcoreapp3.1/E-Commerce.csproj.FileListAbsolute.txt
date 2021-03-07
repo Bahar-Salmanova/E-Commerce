@@ -62,6 +62,6 @@ C:\Users\User\source\repos\E-Commerce\E-commerce\bin\Debug\netcoreapp3.1\Humaniz
 C:\Users\User\source\repos\E-Commerce\E-commerce\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
 C:\Users\User\source\repos\E-Commerce\E-Commerce\bin\Debug\netcoreapp3.1\AutoMapper.dll
 C:\Users\User\source\repos\E-Commerce\E-Commerce\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\User\source\repos\E-Commerce\E-Commerce\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 C:\Users\User\source\repos\E-Commerce\E-Commerce\obj\Debug\netcoreapp3.1\E-Commerce.csproj.CoreCompileInputs.cache
 C:\Users\User\source\repos\E-Commerce\E-Commerce\obj\Debug\netcoreapp3.1\E-Commerce.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\User\source\repos\E-Commerce\E-Commerce\bin\Debug\netcoreapp3.1\Properties\launchSettings.json

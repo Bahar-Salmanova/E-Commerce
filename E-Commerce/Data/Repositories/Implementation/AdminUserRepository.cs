@@ -14,26 +14,16 @@ namespace Data.Repositories.Implementation
         public AdminUserRepository(ApplicationDbContext context) : base(context) { }
         private ApplicationDbContext _context => Context as ApplicationDbContext;
 
-        public async Task <IEnumerable<AdminUser>> GetFeaturedNameByAdmin(string username)
+        public async Task <IEnumerable<AdminUser>> GetFeaturedNameByAdmin(string username,string password)
         {
           return  await _context.AdminUsers.Include(a=>a.Permissions)
                 .Where(a => a.UserName == username)
+                .Where(a=>a.Password==password)
                 .Where(a=>!a.Permissions.IsBuyPermision)
                 .Where(a=>a.Permissions.IsCreatePermission)
                  .ToListAsync();
            
         }
-         public async Task<IEnumerable<AdminUser>> GetFeaturedPasswordByAdmin(string password)
-        {
-           return await _context.AdminUsers
-                .Include(p=>p.Permissions)
-                .Where(a => a.Password == password)
-                .Where(p=>!p.Permissions.IsBuyPermision)
-                .Where(a => a.Permissions.IsCreatePermission)
-                .ToListAsync();
-        }
-
-
-        
+       
     }
 }
